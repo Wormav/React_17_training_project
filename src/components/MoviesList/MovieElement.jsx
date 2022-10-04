@@ -1,20 +1,18 @@
 import React from "react";
 
-function MovieElement() {
+function MovieElement({ movie, updateSelectedMovie }) {
+  function mouseEnter() {
+    updateSelectedMovie(movie.title);
+  }
+
   return (
-    <div className="w-25 p-2">
-      <div className="card">
-        <img
-          alt="film"
-          src="https://www.plansamericains.com/wp-content/uploads/Gladiator-affiche-1.jpg"
-          className="card-img-top"
-        />
-        <div className="card-body">
-          <h5 className="card-title">GLADIATOR</h5>
-          <p className="card-text">
-            Le général romain Maximus est le plus fidèle soutien de l'empereur
-            Marc Aurèle, qu'il a conduit de victoire en victoire.
-          </p>
+    <div onMouseEnter={mouseEnter} className="w-50 p-2">
+      <div className="border d-flex">
+        <img width="150" height="200" alt="film" src={movie.img} />
+        <div className="flex-fill d-flex flex-column p-3">
+          <h5>{movie.title}</h5>
+          <hr className="w-100" />
+          <span>{movie.details}</span>
         </div>
       </div>
     </div>
