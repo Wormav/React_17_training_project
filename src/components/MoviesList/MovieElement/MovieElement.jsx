@@ -19,7 +19,7 @@ function MovieElement({ movie, updateSelectedMovie }) {
       style={style}
       className="d-flex flex-row bg-light"
     >
-      <img width="150" height="200" alt="film" src={movie.img} />
+      <img width="185" alt="film" src={movie.img} />
       <div className="flex-fill d-flex flex-column p-3">
         <h5>{movie.title}</h5>
         <hr className="w-100" />

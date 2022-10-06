@@ -7,9 +7,7 @@ function MovieDetails({ movie }) {
       <hr className="w-100" />
       <div>
         <img
-          className="d-block mx-auto "
-          width="150"
-          height="200"
+          className="d-block mx-auto w-100"
           src={movie.img}
           alt="jacket du film"
         />
