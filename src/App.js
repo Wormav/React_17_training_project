@@ -1,9 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Header from "./components/Header/Header";
-import MovieDetails from "./components/MoviesDetails/MovieDetails";
-import MovieList from "./components/MoviesList/MovieList";
-import SearchBar from "./components/SearchBar/SearchBar";
-import Loading from "./components/Utils/Loading";
+import Movies from "./features/movies/Movies";
 import apiMovie, { apiMovieMap } from "./conf/api.movie";
 
 function App() {
@@ -32,15 +29,13 @@ function App() {
   return (
     <div className="App d-flex flex-column">
       <Header />
-      <SearchBar updateMovie={(bite) => setMovies(bite)} />
-      {loaded ? (
-        <div className="d-flex flex-row flex-fill pt-4 p-2">
-          <MovieList movie={movies} updateSelectedMovie={updateSelectedMovie} />
-          <MovieDetails movie={movies[selected]} />
-        </div>
-      ) : (
-        <Loading />
-      )}
+      <Movies
+        loaded={loaded}
+        updateSelectedMovie={updateSelectedMovie}
+        movies={movies}
+        setMovies={setMovies}
+        selected={selected}
+      />
     </div>
   );
 }

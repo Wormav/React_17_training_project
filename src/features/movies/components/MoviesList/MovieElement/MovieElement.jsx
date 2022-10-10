@@ -15,7 +15,7 @@ function MovieElement({ movie, updateSelectedMovie }) {
 
   return (
     <div
-      onMouseEnter={mouseEnter}
+      onClick={mouseEnter}
       style={style}
       className="d-flex flex-row bg-light"
     >
