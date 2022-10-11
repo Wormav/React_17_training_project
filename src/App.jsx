@@ -78,7 +78,10 @@ function App() {
               />
             }
           />
-          <Route path="/favoris" element={<Favoris />} />
+          <Route
+            path="/favoris"
+            element={<Favoris favoris={favoris} removeFavori={removeFavori} />}
+          />
         </Routes>
       </div>
     </Router>
