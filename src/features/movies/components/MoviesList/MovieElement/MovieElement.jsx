@@ -8,7 +8,13 @@ const style = {
   cursor: "pointer",
 };
 
-function MovieElement({ movie, updateSelectedMovie }) {
+function MovieElement({
+  movie,
+  updateSelectedMovie,
+  removeFavori,
+  addFavori,
+  isFavoris,
+}) {
   function mouseEnter() {
     updateSelectedMovie(movie.title);
   }
@@ -23,7 +29,28 @@ function MovieElement({ movie, updateSelectedMovie }) {
       <div className="flex-fill d-flex flex-column p-3">
         <h5>{movie.title}</h5>
         <hr className="w-100" />
-        <span>{movie.details}</span>
+        <span className="flex-fill">{movie.details}</span>
+        <div className="d-flex flex-row justify-content-end">
+          {isFavoris ? (
+            <button
+              onClick={() => {
+                removeFavori(movie.title);
+              }}
+              className="btn btn-small btn-danger"
+            >
+              Remove
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                addFavori(movie.title);
+              }}
+              className="btn btn-small btn-primary"
+            >
+              Add
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

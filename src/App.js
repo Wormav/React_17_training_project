@@ -9,6 +9,7 @@ function App() {
   const [selected, setSelected] = useState(0);
   const [movies, setMovies] = useState(null);
   const [loaded, setLoaded] = useState(false);
+  const [favoris, setFavoris] = useState([]);
 
   function updateSelectedMovie(title) {
     const index = movies.findIndex((m) => {
@@ -28,6 +29,20 @@ function App() {
     getData();
   }, [getData]);
 
+  const addFavori = (title) => {
+    const favoriData = favoris.slice();
+    const movieAdded = movies.find((m) => m.title === title);
+    favoriData.push(movieAdded);
+    setFavoris(favoriData);
+  };
+
+  const removeFavori = (title) => {
+    const favoriData = favoris.slice();
+    const indexRemoveMovie = favoriData.findIndex((f) => f.title === title);
+    favoriData.splice(indexRemoveMovie, 1);
+    setFavoris(favoriData);
+  };
+
   return (
     <Router>
       <div className="App d-flex flex-column">
@@ -42,6 +57,9 @@ function App() {
                 movies={movies}
                 setMovies={setMovies}
                 selected={selected}
+                addFavori={addFavori}
+                removeFavori={removeFavori}
+                favorisTitle={favoris.map((f) => f.title)}
               />
             }
           ></Route>
@@ -54,6 +72,9 @@ function App() {
                 movies={movies}
                 setMovies={setMovies}
                 selected={selected}
+                addFavori={addFavori}
+                removeFavori={removeFavori}
+                favorisTitle={favoris.map((f) => f.title)}
               />
             }
           />
