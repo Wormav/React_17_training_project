@@ -24,7 +24,7 @@ function Movies({
             updateSelectedMovie={updateSelectedMovie}
             addFavori={addFavori}
             removeFavori={removeFavori}
-            favorisTitle={favorisTitle}
+            favorisTitle={favorisTitle.map((f) => f.title)}
           />
           <MovieDetails movie={movies[selected]} />
         </div>
